@@ -12,4 +12,4 @@ if [ "${ctrlArg}" != 'stop'  -a  "${ctrlArg}" != 'start'  -a  "${ctrlArg}" != 'r
 fi
 ${JENKINS_RUN_PATH}/.jenkinsctl_main.sh $*
 exit $?
-
+#commentted line
