@@ -1,0 +1,78 @@
+#___________________________________________________________________#
+#   Who     |   Date        |               Comment                 #
+#___________________________________________________________________#
+#   JLP     |   19/04/2016  | Creation. File is sourced in          #
+#           |               | jenkinsctl.sh                         #
+#           |               | Modification must be made here        #
+#___________________________________________________________________#
+#                PLEASE NEVER ADD CODE HERE                         #
+#___________________________________________________________________#
+# The lines below must be updated to the instance characteristics   #
+#___________________________________________________________________#
+
+# Where the jenkins home is rooted
+export jenkinsCIRoot="/var/fpwork"
+
+# User who runs the instance
+export userInstance=ca_scmjenkinsadm
+
+ #Instance Name
+export instanceName="5G_CIMASTER_3"
+
+# Server FQDN
+export instanceServerFQDN="esling135.emea.nsn-net.net"
+
+# Port Number
+export instancePort="13080"
+
+# Instance URL
+export instanceURL="http://5g-cimaster-3.eecloud.dynamic.nsn-net.net:13080/"
+
+# Java Version
+export javaVersion="1.8.0_60"
+
+# Java Path
+export javaPath="/var/fpwork/5G_CIMASTER_3/tools/ext/sun/jdk-1.8.0_60/x86_64-linux2.6"
+export javaHome="/var/fpwork/5G_CIMASTER_3/tools/ext/sun/jdk-1.8.0_60/x86_64-linux2.6"
+
+# Information string
+export instanceDesc='Jenkins CI MTS Sandbox'
+
+# Java Memory Option
+#export javaMemOpts="-Xms2g -Xmx4g"
+
+# Java Memory Option tgengo 11/07/2017 verbose gc enabled
+#export javaMemOpts="-Xms2g -Xmx4g -server -XX:+AlwaysPreTouch -verbose:gc -Xloggc:/var/fpwork/5G_CIMASTER_3/Jenkins_Home/gc-%t.log -XX:NumberOfGCLogFiles=5 -XX:+UseGCLogFileRotation -XX:GCLogFileSize=50m -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintHeapAtGC -XX:+PrintGCCause -XX:+PrintTenuringDistribution -XX:+PrintReferenceGC -XX:+PrintAdaptiveSizePolicy"
+
+# Java Memory Option tgengo 11/20/2017
+export javaMemOpts="-server -XX:+AlwaysPreTouch -Xloggc:/var/fpwork/5G_CIMASTER_3/Jenkins_Home/GC/gc-%t.log -XX:NumberOfGCLogFiles=2 -XX:+UseGCLogFileRotation -XX:GCLogFileSize=100m -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintHeapAtGC -XX:+PrintGCCause -XX:+PrintTenuringDistribution -XX:+PrintReferenceGC -XX:+PrintAdaptiveSizePolicy -XX:+UseG1GC -XX:+UseStringDeduplication -XX:+ParallelRefProcEnabled -XX:+ExplicitGCInvokesConcurrent -XX:+UnlockDiagnosticVMOptions -XX:G1SummarizeRSetStatsPeriod=1 -XX:MaxMetaspaceExpansion=64M -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20 -Xms24g -Xmx48g -Djenkins.model.Jenkins.logStartupPerformance=true"
+
+# Instance Home
+export instanceHome="/var/fpwork/5G_CIMASTER_3/Jenkins_Home"
+export JENKINS_HOME="/var/fpwork/5G_CIMASTER_3/Jenkins_Home"
+# Jetty Debug Options
+# Not set by default
+# To be added within jettyAddOpts if required
+export jettyDbgOpts='--logThrowingThread --debug'
+# Empty var to update if some temporary / trial / additional options are required
+# These vars are added to resp JAVA_OPTS and JETTY_OPTS
+export javaAddOpts=""
+export jettyAddOpts=""
+
+# Content security protection to relax in order static files to be correctly served (HTML Reports / Javadoc ...)
+CSP_OPTS="-Dhudson.model.DirectoryBrowserSupport.CSP=\"sandbox; 'allow-forms allow-same-origin allow-scripts allow-top-navigation'; default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self'  www.kryogenix.org 'unsafe-inline' 'unsafe-eval'; child-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'self' 'unsafe-inline' 'unsafe-eval';"
+
+export JENKINS_INSTANCE_HOME="${instanceHome}"
+export JAVA_HOME="${javaHome}"
+export JETTY_HOME="${JENKINS_INSTANCE_HOME}/webapps"
+export JETTY_BASE="${JENKINS_INSTANCE_HOME}/war"
+export JENKINS_TMPDIR="${JENKINS_INSTANCE_HOME}/webapps/temp"
+export JAVA_SESSION_OPTS="-Djava.io.tmpdir=${JENKINS_TMPDIR}"
+
+JAVA_OPTS="-Dorg.jenkinsci.plugins.valgrind.maxBuildsSize=10 -Dgroovy.use.classvalue=true -Djava.awt.headless=true -server -Djavax.net.ssl.trustStore="${JAVA_HOME}/jre/lib/security/cacerts"  ${jenkinsUpdCenterOption} ${JAVA_SESSION_OPTS} ${javaMemOpts} ${javaAddOpts} -Dhudson.model.ParametersAction.keepUndefinedParameters=true"
+
+#_________________________________________________________________#
+# End of Instance Characteristics
+#_________________________________________________________________#
+#                PLEASE NEVER ADD CODE HERE                       #
+#_________________________________________________________________#

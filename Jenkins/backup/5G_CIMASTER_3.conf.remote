@@ -1,0 +1,35 @@
+#General
+
+rsync_bin="/usr/bin/rsync"
+
+#Instance specific
+
+instanceName="5G_CIMASTER_3"
+instanceURL="http://5g-cimaster-3.eecloud.dynamic.nsn-net.net:13080/"
+
+instanceRootDir="/var/fpwork/5G_CIMASTER_3"
+instanceBackupDir="/var/fpwork/Jenkins_Backup/BACKUPS/$instanceName"
+instanceBackupDir="/var/fpwork/BACKUP/$instanceName"
+server="esling133"
+
+#backup/script behavior
+
+excludeBuildData="true"
+logPath="/var/fpwork/Jenkins_Backup/log/$instanceName"
+logFilePrefix="$instanceName"
+keepBackup=10
+keepLog=7
+
+
+#sending messages
+
+mail_enabled="true"
+#mailFrom=mts-support-elsys-design@acos.alcatel-lucent.com
+mailFrom=jenkins-solution@list.nokia.com
+#mailTo="vladimir.pavlovic.ext@nokia.com strahinja.sarovic.ext@nokia.com dejan.roncevic.ext@nokia.com caslav.sunjka.ext@nokia.com mladen.krsmanovic.ext@nokia.com ivan.vukdragovic.ext@nokia.com"
+#mailTo="stephane.gouverne-maingault@nokia.com"
+#mailTo="stephane.gouverne-maingault@nokia.com richard.raynaud@nokia.com alain.treille@nokia.com"
+mailTo="stephane.gouverne-maingault@nokia.com"
+mailTo=""
+subject="Jenkins Backup Script: "
+subject_error="ERROR (Jenkins Backup Script): "
